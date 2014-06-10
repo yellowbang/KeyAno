@@ -14,7 +14,7 @@ define(function(require, exports, module) {
     var Constant = require('app/Constant');
 
     var Lyrics = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var Lyrics = ['多','谢','你','啦','林','颖','薯','high','hand'];
+//    var Lyrics = ['多','谢','你','啦','林','颖','薯','high','hand'];
 
     function KeyAno(){
 
