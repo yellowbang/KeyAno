@@ -1,0 +1,28 @@
+.app-background {
+  height: 100%;
+  width: 100%;
+  background-image: url("/assets/img/Piano-01-L.gif");
+  background-size: 100%;
+  -webkit-filter: blur(12px);
+  filter: blur(20px);
+}
+.bon-surf {
+  background-color: rgba(255, 255, 0, 0.8);
+  color: #2c2c2c;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0px #a59bff;
+  text-shadow: 1px 1px #cfe2ea;
+}
+.bon-background {
+  background-color: rgba(113, 255, 253, 0.5);
+  color: rgba(255, 89, 227, 0.8);
+  font-size: 30px;
+}
+.header-background-image {
+  float: right;
+  margin-right: 8%;
+}
+.jump-up-surface-word {
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+  opacity: 0.85;
+}
