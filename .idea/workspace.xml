@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e913d7a-0c9d-44b1-aa85-ccb7aefb588c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5e913d7a-0c9d-44b1-aa85-ccb7aefb588c" name="Default" comment="" />
     <list id="0d7eb075-e4ef-4c46-8a7e-34bd6f7f49cc" name="New changelist" comment="" />
     <ignored path="KeyAno.iws" />
     <ignored path=".idea/workspace.xml" />
