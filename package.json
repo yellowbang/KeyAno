@@ -23,5 +23,5 @@
   },
   "devDependencies": {
   },
-  "files":["/assets/sound/0do.wav","/assets/sound/0re.wav"]
+  "files":"/assets/sound/0do.wav"
 }

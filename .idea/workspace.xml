@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e913d7a-0c9d-44b1-aa85-ccb7aefb588c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="0d7eb075-e4ef-4c46-8a7e-34bd6f7f49cc" name="New changelist" comment="" />
     <ignored path="KeyAno.iws" />
@@ -67,6 +67,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="15" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="495">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BufferLoader.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/widget/SoundPlayer/BufferLoader.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -79,7 +88,7 @@
       <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="4" selection-start="538" selection-end="538" vertical-scroll-proportion="0.62376237" vertical-offset="0" max-vertical-offset="505">
+            <state line="25" column="33" selection-start="662" selection-end="662" vertical-scroll-proportion="0.7425743" vertical-offset="0" max-vertical-offset="505">
               <folding />
             </state>
           </provider>
@@ -101,15 +110,6 @@
               <folding>
                 <marker date="1402599439000" expanded="true" signature="3954:3967" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NElementsRotate.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/widget/NElementsRotate/NElementsRotate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="57" selection-start="2168" selection-end="2183" vertical-scroll-proportion="6.0" vertical-offset="1041" max-vertical-offset="1575">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -169,8 +169,8 @@
         <option value="$PROJECT_DIR$/src/widget/JumpUpSurface/JumpUpSurfaceItem.js" />
         <option value="$PROJECT_DIR$/src/app/KeyAno.js" />
         <option value="$PROJECT_DIR$/app.yaml" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/app.js" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
@@ -662,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="597" selection-end="597" vertical-scroll-proportion="0.51724136" vertical-offset="0" max-vertical-offset="570">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="324" selection-end="324" vertical-scroll-proportion="0.52478135" vertical-offset="0" max-vertical-offset="343">
@@ -683,9 +676,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="15" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="4" selection-start="538" selection-end="538" vertical-scroll-proportion="0.62376237" vertical-offset="0" max-vertical-offset="505">
+        <state line="25" column="33" selection-start="662" selection-end="662" vertical-scroll-proportion="0.7425743" vertical-offset="0" max-vertical-offset="505">
           <folding />
         </state>
       </provider>
