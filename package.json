@@ -1,23 +1,24 @@
 {
-    "name": "KeyAno",
-    "version": "0.0.0",
-    "description": "KeyAno ====== This is a KEYboard piANO....",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/yellowbang/KeyAno.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/yellowbang/KeyAno/issues"
-    },
-    "homepage": "https://github.com/yellowbang/KeyAno",
-    "dependencies": {
-        "express": "^4.4.2",
-        "logfmt": "^1.1.2"
-    }
+  "name": "KeyAno",
+  "version": "0.0.0",
+  "description": "KeyAno ====== This is a KEYboard piANO....",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yellowbang/KeyAno.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yellowbang/KeyAno/issues"
+  },
+  "homepage": "https://github.com/yellowbang/KeyAno",
+  "dependencies": {
+    "express": "^4.4.2",
+    "logfmt": "^1.1.2"
+  },
+  "devDependencies": {}
 }
