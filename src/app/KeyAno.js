@@ -100,12 +100,18 @@ define(function(require, exports, module) {
     }
 
     function _setupEvents(){
-        Engine.on('keyup',function(e){
+        this.time = 0;
+        var lastIndex = -2;
+        Engine.on('keypress', function(e){
             var index = this.keyCodeToIndex(e.keyCode);
-            if (index == -1) return;
-            this.jumpUpSurface.addItem({content: Lyrics[this.currIndex%Lyrics.length]});
+            if (index == -1 || lastIndex == index) return;
+            this.jumpUpSurface.addItem();
             this.sound.playSound(index, 1);
+            lastIndex = index;
         }.bind(this));
+        Engine.on('keyup',function(e){
+            lastIndex = -2;
+        }.bind(this))
     }
 
     KeyAno.prototype.keyCodeToIndex = function(code){

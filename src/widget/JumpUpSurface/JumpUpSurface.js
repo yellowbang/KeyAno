@@ -50,7 +50,7 @@ define(function(require, exports, module) {
     JumpUpSurface.prototype.addItem = function(model){
         var item = new JumpUpSurfaceItem({
             physicsEngine: this.physicsEngine,
-            word: model.content,
+//            word: model.content,
             size: this.options.size,
             initVelocity: [0,-SPEED[Math.floor(Math.random()*SPEED.length)],-0.5],
             color: 'hsl('+Math.random()*360+',100%,85%)'
