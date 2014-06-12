@@ -18,7 +18,9 @@
   "homepage": "https://github.com/yellowbang/KeyAno",
   "dependencies": {
     "express": "^4.4.2",
-    "logfmt": "^1.1.2"
+    "logfmt": "^1.1.2",
+      "aa": "/assets/sound/0do.wav"
+
   },
   "devDependencies": {
       "aa": "/assets/sound/0do.wav"
