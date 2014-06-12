@@ -11,7 +11,7 @@ http.createServer(function(request, response) {
 
     path.exists(filename, function(exists) {
         if(!exists) {
-            response.writeHead(404, {"Content-Type": "text/plain"});
+            response.writeHead(404, {"Content-Type": "application/javascript"});
             response.write("404 Not Found\n");
             response.end();
             return;
