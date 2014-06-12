@@ -12,6 +12,7 @@ define(function(require, exports, module) {
 //    var SurfacesNet = require('widget/surfacesNet/SurfacesNet');
     var JumpUpSurface = require('widget/JumpUpSurface/JumpUpSurface');
     var NElementsRotate = require('widget/NElementsRotate/NElementsRotate');
+    var TipsView = require('widget/TipsView');
 
     var Constant = require('app/Constant');
 
@@ -81,6 +82,10 @@ define(function(require, exports, module) {
             transform:Transform.rotateX(-0.2)
         });
         this.layout.content.add(this.nElementRotateMod).add(this.nElementRotate);
+
+        this.tipsView = new TipsView();
+        this.add(this.tipsView);
+        this._eventInput.pipe(this.tipsView);
     }
 
     function _setSoundPlayer(){
@@ -98,14 +103,20 @@ define(function(require, exports, module) {
         this.time = 0;
         var lastIndex = -2;
         Engine.on('keypress', function(e){
+            if (this.tipsView.isShowing) this._eventInput.emit('setFading');
             var index = this.keyCodeToIndex(e.keyCode);
             if (index == -1 || lastIndex == index) return;
             this.jumpUpSurface.addItem();
             this.sound.playSound(index, 1);
             lastIndex = index;
         }.bind(this));
-        Engine.on('keyup',function(e){
+
+        var setChanging = _.debounce(function(){
+            this._eventInput.emit('setChanging');
+        }.bind(this),5000);
+        Engine.on('keyup',function(){
             lastIndex = -2;
+            setChanging();
         }.bind(this))
     }
 

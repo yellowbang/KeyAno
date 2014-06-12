@@ -41,3 +41,10 @@
   font-size: 100px;
   line-height: 100px;
 }
+.tips-view {
+  font-family: "Arial Black";
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}

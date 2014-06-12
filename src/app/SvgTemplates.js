@@ -122,7 +122,7 @@ define(function(require, exports, module) {
                 '</svg>'].join('')
         },
         chick: function(size, color){
-            return ['<img src="/assets/img/Chick%20Critter.png" style="height:',size[0],'px; width: ',size[1],'px"/>',
+            return ['<img src="/assets/img/ChickCritter.png" style="height:',size[0],'px; width: ',size[1],'px"/>',
                 ''].join('')
         },
         duck: function(size, color){
