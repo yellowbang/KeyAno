@@ -8,8 +8,8 @@ define(function(require, exports, module) {
 
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
-    var Ring3D = require('widget/ring3D/Ring3D');
-    var SurfacesNet = require('widget/surfacesNet/SurfacesNet');
+//    var Ring3D = require('widget/ring3D/Ring3D');
+//    var SurfacesNet = require('widget/surfacesNet/SurfacesNet');
     var JumpUpSurface = require('widget/JumpUpSurface/JumpUpSurface');
     var NElementsRotate = require('widget/NElementsRotate/NElementsRotate');
 
