@@ -1,25 +1,41 @@
-.app-background {
-//  background: -webkit-radial-gradient(center, ellipse cover, #4c4c4c 0%,#595959 12%,#666666 22%,#666666 22%,#666666 24%,#474747 39%,#111111 60%,#2c2c2c 87%,#2c2c2c 89%,#2b2b2b 99%); /* Chrome10+,Safari5.1+ */
-//  background: -webkit-radial-gradient(center, ellipse cover, #f0b7a1 0%,#aa6e14 42%,#752201 100%,#bf6e4e 100%,#752201 101%); /* Chrome10+,Safari5.1+ */ //  background-image: url("../assets/img/content-background3.jpeg");
-  //  background-size:100%;
-  height: 100%;
-  width: 100%;
-  background-image: url("/assets/img/Piano-01-L.gif");
-  background-size: 100%;
-  -webkit-filter: blur(12px);
-//  -moz-filter: blur(5px);
-//  -o-filter: blur(5px);
-//  -ms-filter: blur(5px);
-  filter: blur(20px);
+@title-shadow-color: #3c3131;
+
+@font-face {
+  font-family: "akaDylan Plain";
+  src: url('/assets/fonts/akaDylan%20Plain.ttf');
+}
+@font-face {
+  font-family: "wtcc02";
+  src: url('/assets/fonts/wtcc02.ttf');
 }
 
-.bon-surf {
-  background-color: rgba(255,255,0,0.8);
-  color: #2c2c2c;
-  border-radius: 4px;
-  box-shadow: 1px 1px 0px #a59bff;
-  text-shadow: 1px 1px #cfe2ea;
+.app-background  {
+  background-color: black;
+  background-image: url("/assets/img/Piano-01-L.gif");
+  background-repeat:no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  background-size: auto 100%;
+  -webkit-filter: blur(12px);
+  -moz-filter: blur(12px);
+  -o-filter: blur(12px);
+  -ms-filter: blur(12px);
+  filter: blur(12px);
 }
+
+.app-background-stretch {
+//  width:100%;
+  height:100%;
+}
+
+//.bon-surf {
+//  background-color: rgba(255,255,0,0.8);
+//  color: #2c2c2c;
+//  border-radius: 4px;
+//  box-shadow: 1px 1px 0px #a59bff;
+//  text-shadow: 1px 1px #cfe2ea;
+//}
 
 .bon-background{
   background-color: rgba(113, 255, 253, 0.50);
@@ -33,6 +49,12 @@
 }
 
 .jump-up-surface-word{
-  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
   opacity: 0.85;
+}
+
+.n-element-rotate-word{
+  font-family: "akaDylan Plain","wtcc02","Arial Black";
+  text-shadow: 2px 4px @title-shadow-color,1px -1px #e9e9e9,-1px 1px @title-shadow-color,-1px -1px #e9e9e9;
+  font-size: 100px;
+  line-height: 100px;
 }

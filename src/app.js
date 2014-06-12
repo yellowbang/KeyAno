@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     // import dependencies
     var Engine = require('famous/core/Engine');
     var mainContext = Engine.createContext();
-    mainContext.setPerspective(1000);
+    mainContext.setPerspective(2000);
 
     var KeyAno = require('app/KeyAno');
 

@@ -21,9 +21,12 @@ define(function(require, exports, module) {
     var TouchSync           = require('famous/inputs/TouchSync');
     var MouseSync           = require('famous/inputs/MouseSync');
     var Transitionable      = require('famous/transitions/Transitionable');
+    var Timer      = require('famous/utilities/Timer');
+
+    var SvgTemplates = require('app/SvgTemplates');
 
     var ITEM = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var SPEED = [0.7,0.75,0.8,0.85,0.9,0.95,1];
+    var SPEED = [1,1.05,1.1,1.15,1.2,1.25,1.3,1.35];
 
     function JumpUpSurfaceItem() {
         window.TT = Transform;
@@ -48,7 +51,8 @@ define(function(require, exports, module) {
         word: ITEM[Math.floor(Math.random()*ITEM.length)],
         initVelocity: [0,-SPEED[Math.floor(Math.random()*SPEED.length)],0],
         fontSizeFront: '90',
-        fontSizeBack: '90'
+        fontSizeBack: '90',
+        color: 'hsl('+Math.random()*360+',100%,85%)'
     };
 
     function _createView(){
@@ -56,17 +60,19 @@ define(function(require, exports, module) {
             size: [true,true],
             properties:{
                 fontSize:this.options.fontSizeBack+'px',
-                color: 'hsl('+Math.random()*360+',100%,85%)'
+                color: this.options.color
             }
         });
         this.wordFront = new Surface({
             size: [true,true],
             properties:{
                 fontSize:this.options.fontSizeFront+'px',
-                color: 'hsl('+Math.random()*360+',100%,85%)'
+                color: this.options.color
             }
         });
         this.setWord();
+//        setTimeout(function(){
+//            debugger},1000)
     }
 
     function _createParticle(){
@@ -76,13 +82,21 @@ define(function(require, exports, module) {
         });
         this.renderNode.add(this.particle).add(this.wordBack);
         this.renderController.show(this.renderNode);
+        Timer.setTimeout(function(){
+            this.renderController.hide();
+        }.bind(this),3000)
     }
 
     JumpUpSurfaceItem.prototype.setWord = function(){
         var content = ['<div class="jump-up-surface-word">',this.options.word,'</div>'].join('');
-        this.wordFront.setContent(['<div style="color:#000000">',content,'</div>'].join(''));
+        var content = ['<div class="jump-up-surface-word">',this.options.word,'</div>'].join('');
+        var content = SvgTemplates[_.keys(SvgTemplates)[Math.floor(Math.random()*_.keys(SvgTemplates).length)]](this.options.size,this.options.color);
+//        this.wordFront.setContent(['<div style="color:#000000">',content,'</div>'].join(''));
         this.wordBack.setContent(['<div>',content,'</div>'].join(''));
     };
+
+
+
 
     module.exports = JumpUpSurfaceItem;
 

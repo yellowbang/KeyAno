@@ -18,12 +18,15 @@ define(function(require, exports, module) {
         },
 
         HeaderSize:0,
-        FooterSize:70,
+        FooterSize:0,
+
+//        Title: ['生','日','快','樂','Hap','py','Birth','day'],
+        Title: 'adfsdfdsfdsfs',
 
         SurfacesNetDimension: [9,9],
         SurfacesNetSpacing: 4,//window.innerWidth*0.01,
         SurfacesNetPaddingLeft: 100,
-        SurfacesNetPaddingRight: 100,
+        SurfacesNetPaddingRight: 100
 
     }
 
