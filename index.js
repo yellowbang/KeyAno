@@ -21,7 +21,7 @@ http.createServer(function(request, response) {
 
         fs.readFile(filename, "binary", function(err, file) {
             if(err) {
-                response.writeHead(500, {"Content-Type": "text/plain"});
+                response.writeHead(500, {"Content-Type": "application/javascript"});
                 response.write(err + "\n");
                 response.end();
                 return;
