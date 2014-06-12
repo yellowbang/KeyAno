@@ -20,5 +20,10 @@
     "express": "^4.4.2",
     "logfmt": "^1.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+      
+  },
+  "files": [
+        "/assets/sound/0do.wav"
+  ]
 }
