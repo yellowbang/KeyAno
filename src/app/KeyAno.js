@@ -8,7 +8,6 @@ define(function(require, exports, module) {
 
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
-    var HeaderView = require('app/HeaderView');
     var Ring3D = require('widget/ring3D/Ring3D');
     var SurfacesNet = require('widget/surfacesNet/SurfacesNet');
     var JumpUpSurface = require('widget/JumpUpSurface/JumpUpSurface');
@@ -54,10 +53,6 @@ define(function(require, exports, module) {
             footerSize: Constant.FooterSize
         });
         this.add(this.layout);
-    }
-    function _setupHeader(){
-        this.headerView = new HeaderView();
-        this.layout.header.add(this.headerView);
     }
 
     function _setupContent(){
