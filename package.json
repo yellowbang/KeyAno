@@ -21,9 +21,6 @@
     "logfmt": "^1.1.2"
   },
   "devDependencies": {
-      
-  },
-  "files": [
-        "/assets/sound/0do.wav"
-  ]
+      "aa": "/assets/sound/0do.wav"
+  }
 }
