@@ -5,14 +5,15 @@ define(function(require, exports, module) {
     var Modifier = require('famous/core/Modifier');
     var Transform = require('famous/core/Transform');
     var HeaderFooterLayout = require('famous/views/HeaderFooterLayout');
+    var ImageSurface = require('famous/surfaces/ImageSurface');
+    var Vector = require('famous/math/Vector');
 
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
-//    var Ring3D = require('widget/ring3D/Ring3D');
-//    var SurfacesNet = require('widget/surfacesNet/SurfacesNet');
     var JumpUpSurface = require('widget/JumpUpSurface/JumpUpSurface');
     var NElementsRotate = require('widget/NElementsRotate/NElementsRotate');
     var TipsView = require('widget/TipsView');
+    var DemoView = require('widget/DemoView');
 
     var Constant = require('app/Constant');
 
@@ -57,23 +58,6 @@ define(function(require, exports, module) {
     }
 
     function _setupContent(){
-//        this.ring3D = new Ring3D({Content: 'Hello',
-//            Size : [50,100],
-//            Period : 8000,
-//            StringPosition: [window.innerWidth*0.5,window.innerHeight*0.1,0],
-//            Position : [window.innerWidth*0.1, window.innerHeight*0.1, 0],
-//            Velocity : [0,0.3,1]
-//        });
-//        this.layout.content.add(this.ring3D);
-
-//        this.surfacesNet = new SurfacesNet({
-//            Dimension : Constant.SurfacesNetDimension,
-//            ImageURL : this.options.surfacesNetImage,
-//            ImageOriginalSize : this.options.surfacesNetImageSize,
-//            ItemSpacing : Constant.SurfacesNetSpacing
-//        });
-//        this.layout.content.add(this.surfacesNet);
-
         this.jumpUpSurface = new JumpUpSurface();
         this.layout.content.add(this.jumpUpSurface);
 
@@ -86,6 +70,9 @@ define(function(require, exports, module) {
         this.tipsView = new TipsView();
         this.add(this.tipsView);
         this._eventInput.pipe(this.tipsView);
+
+        this.demoView = new DemoView();
+        this.add(this.demoView);
     }
 
     function _setSoundPlayer(){

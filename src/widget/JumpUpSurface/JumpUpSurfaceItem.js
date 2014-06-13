@@ -23,6 +23,8 @@ define(function(require, exports, module) {
     var Transitionable      = require('famous/transitions/Transitionable');
     var Timer      = require('famous/utilities/Timer');
 
+    var ShakingItemView = require('widget/ShakingItemView');
+
     var SvgTemplates = require('app/SvgTemplates');
 
     var ITEM = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -80,7 +82,7 @@ define(function(require, exports, module) {
             position: new Vector(this.options.initPosition),
             velocity: new Vector(this.options.initVelocity)
         });
-        this.renderNode.add(this.particle).add(this.wordBack);
+        this.renderNode.add(this.particle).add(new ShakingItemView({item:this.wordBack, shakeAngle: 0.05}));
         this.renderController.show(this.renderNode);
         Timer.setTimeout(function(){
             this.renderController.hide();
@@ -88,8 +90,8 @@ define(function(require, exports, module) {
     }
 
     JumpUpSurfaceItem.prototype.setWord = function(){
-        var content = ['<div class="jump-up-surface-word">',this.options.word,'</div>'].join('');
-        var content = ['<div class="jump-up-surface-word">',this.options.word,'</div>'].join('');
+//        var content = ['<div class="jump-up-surface-word">',this.options.word,'</div>'].join('');
+//        var content = ['<div class="jump-up-surface-word">',this.options.word,'</div>'].join('');
         var content = SvgTemplates[_.keys(SvgTemplates)[Math.floor(Math.random()*_.keys(SvgTemplates).length)]](this.options.size,this.options.color);
 //        this.wordFront.setContent(['<div style="color:#000000">',content,'</div>'].join(''));
         this.wordBack.setContent(['<div>',content,'</div>'].join(''));

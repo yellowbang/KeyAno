@@ -20,7 +20,6 @@ define(function(require, exports, module) {
     function TipsView(options) {
 
         View.call(this);
-        window.bon =this
         _setupSurf.call(this);
         _setupEvent.call(this);
 
