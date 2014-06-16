@@ -21,7 +21,7 @@ define(function(require, exports, module) {
         FooterSize:0,
 
 //        Title: ['生','日','快','樂','Hap','py','Birth','day'],
-        Title: 'adfsdfdsfdsfs',
+        Title: ['Play','a','song','and','have','fun', '!'],
 
         SurfacesNetDimension: [9,9],
         SurfacesNetSpacing: 4,//window.innerWidth*0.01,

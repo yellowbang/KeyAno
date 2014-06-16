@@ -36,7 +36,7 @@ define(function(require, exports, module) {
     function _setupSurf(){
         this.tipsView = new Surface({
             size:[undefined,100],
-            content: '<div class="tips-view">Press any keys 0-9 <br>or A-Z to play a sound</div>'
+            content: '<div class="tips-view">Press any keys 0-9 <br>or A-Z to play a song</div>'
         });
         this.tipsViewMod = new Modifier({
             origin:[0.5,0.5]

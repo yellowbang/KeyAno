@@ -75,6 +75,8 @@ define(function(require, exports, module) {
             }
         });
         this.itemMod = new Modifier({
+            origin:[0.5,0.5],
+            align:[0,0.05],
             transform:Transform.translate(-this.options.size[0]/2,-this.options.size[1]/2,0)
         });
 

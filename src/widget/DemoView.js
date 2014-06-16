@@ -40,7 +40,7 @@ define(function(require, exports, module) {
         });
         this.demoView = new Surface({
             size:[70,70],
-            content: '<div class="bubble"><a href="http://www.w3schools.com/" target="_blank"><img src="/assets/img/bubble-blue.png" width="70px" height="70px"/><span class="bubble-word">DEMO</span></a></div>'
+            content: '<div class="bubble"><a href="http://youtu.be/9fzrRv1noCQ/" target="_blank"><img src="/assets/img/bubble-blue.png" width="70px" height="70px"/><span class="bubble-word">DEMO</span></a></div>'
         });
         this.add(this.demoViewMod).add(this.demoView);
 
