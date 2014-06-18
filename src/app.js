@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 
     var KeyAno = require('app/KeyAno');
 
-    var keyAno = new KeyAno()
+    var keyAno = new KeyAno();
 
     mainContext.add(keyAno);
 
