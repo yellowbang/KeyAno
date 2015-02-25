@@ -1,4 +1,6 @@
 @title-shadow-color: #3c3131;
+@placeHolderColor: #fefed8;
+@fontColor: #fffbff;
 
 @font-face {
   font-family: "akaDylan Plain";
@@ -89,4 +91,55 @@
   z-index: -1;
   color: white;
   text-shadow: -0.5px 0.5px rgb(31, 41, 38), 0.5px -0.5px rgb(100, 243, 255);
+}
+
+textarea.wish-surface{
+  width: 90%;
+  display: block;
+  margin: 30px auto;
+  font-size: 26px;
+  background-color: transparent;
+  border: none;
+  color: @fontColor;
+  height: 170px;
+}
+
+.button{
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "akaDylan Plain","wtcc02","Arial Black";
+}
+.button:hover{
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 3px -3px 10px white, 3px 3px 10px white, -3px -3px 10px white, -3px 3px 10px white;
+}
+
+//.button:active {
+//  box-shadow: 3px -3px 10px #fefed8, 3px 3px 10px #fefed8, -3px -3px 10px #fefed8, -3px 3px 10px #fefed8;
+//}
+
+.cancel-button{
+  color: dimgrey;
+}
+
+.summit-button{
+  color: green;
+}
+
+::-webkit-input-placeholder {
+  color: @placeHolderColor;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: @placeHolderColor;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: @placeHolderColor;
+}
+
+:-ms-input-placeholder {
+  color: @placeHolderColor;
 }

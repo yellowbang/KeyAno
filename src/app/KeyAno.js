@@ -26,17 +26,18 @@ define(function(require, exports, module) {
         window.KeyAno = this;
         View.call(this);
         this.surf = new View();
+        this.makingWishes = false;
         this.currIndex = 0;
 //        _setupBackground.call(this);
         _setupLayout.call(this);
 //        _setupHeader.call(this);
         _setupContent.call(this);
-        _setupEvents.call(this);
         _setSoundPlayer.call(this);
         _setWishView.call(this);
+        _setupEvents.call(this);
 
         setTimeout(function(){
-            _autoPlay.call(this);
+            //_autoPlay.call(this);
         }.bind(this), 2000)
     }
 
@@ -75,7 +76,7 @@ define(function(require, exports, module) {
 
         this.tipsView = new TipsView();
         this.add(this.tipsView);
-        this._eventInput.pipe(this.tipsView);
+        this._eventOutput.pipe(this.tipsView);
 
         //this.demoView = new DemoView();
         //this.add(this.demoView);
@@ -96,6 +97,11 @@ define(function(require, exports, module) {
         this.time = 0;
         this.lastIndex = -2;
         Engine.on('keypress', function(e){
+            if (this.makingWishes) return;
+            if (e.keyCode==32){
+                this.setMakeWishesMode();
+                return
+            }
             this.onKeyPress(e.keyCode);
         }.bind(this));
 
@@ -105,12 +111,17 @@ define(function(require, exports, module) {
         Engine.on('keyup',function(){
             this.lastIndex = -2;
             setChanging();
+        }.bind(this));
+
+        this.wishView._eventInput.on('scatter', function(){
+            this.playingMode();
         }.bind(this))
     }
 
     function _setWishView(){
         this.wishView = new WishView();
         this.add(this.wishView);
+        this._eventOutput.pipe(this.wishView)
     }
 
     function _autoPlay(){
@@ -135,6 +146,15 @@ define(function(require, exports, module) {
         this.jumpUpSurface.addItem();
         this.sound.playSound(index, 1);
         this.lastIndex = index;
+    };
+
+    KeyAno.prototype.setMakeWishesMode = function(){
+        this.makingWishes = true;
+        this._eventOutput.emit('focus');
+    };
+
+    KeyAno.prototype.playingMode = function(){
+        this.makingWishes = false;
     };
 
     KeyAno.prototype.keyCodeToIndex = function(code){
