@@ -25,7 +25,7 @@ define(function(require, exports, module) {
     JumpUpSurface.prototype.constructor = JumpUpSurface;
 
     JumpUpSurface.DEFAULT_OPTIONS = {
-        size:[200,200]
+        size:[150,150]
     };
 
     function _createPhysics(){

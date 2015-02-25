@@ -49,7 +49,7 @@ define(function(require, exports, module) {
     JumpUpSurfaceItem.prototype.constructor = JumpUpSurfaceItem;
 
     JumpUpSurfaceItem.DEFAULT_OPTIONS = {
-        size: [100,100],
+        size: [70,70],
         word: ITEM[Math.floor(Math.random()*ITEM.length)],
         initVelocity: [0,-SPEED[Math.floor(Math.random()*SPEED.length)],0],
         fontSizeFront: '90',
@@ -73,8 +73,6 @@ define(function(require, exports, module) {
             }
         });
         this.setWord();
-//        setTimeout(function(){
-//            debugger},1000)
     }
 
     function _createParticle(){
@@ -97,10 +95,6 @@ define(function(require, exports, module) {
         this.wordBack.setContent(['<div>',content,'</div>'].join(''));
     };
 
-
-
-
     module.exports = JumpUpSurfaceItem;
-
 
 });

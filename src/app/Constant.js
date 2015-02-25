@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     var Spring = require('famous/physics/forces/Spring');
+    var FourBit = 800;
 
     module.exports = {
 
@@ -20,8 +21,68 @@ define(function(require, exports, module) {
         HeaderSize:0,
         FooterSize:0,
 
-//        Title: ['生','日','快','樂','Hap','py','Birth','day'],
-        Title: ['Play','a','song','and','have','fun', '!'],
+        //Title: ['生','日','快','樂','Merry','Christy'],
+        Title: ['aaaaaaaa'],
+        autoPlay:[
+            //ttytiu ttytoi ttspiiuy aapioi
+            [84, FourBit/2],
+            [84, FourBit/2],
+            [89, FourBit],
+            [84, FourBit],
+            [73, FourBit],
+            [85, FourBit*2],
+            [84, FourBit/2],
+            [84, FourBit/2],
+            [89, FourBit],
+            [84, FourBit],
+            [79, FourBit],
+            [73, FourBit*2],
+            [84, FourBit/2],
+            [84, FourBit/2],
+            [83, FourBit],
+            [80, FourBit],
+            [73, FourBit],
+            [85, FourBit],
+            [89, FourBit],
+            [65, FourBit/2],
+            [65, FourBit/2],
+            [80, FourBit],
+            [73, FourBit],
+            [79, FourBit],
+            [73, FourBit*10],
+            //tiioiuyr yoopoiut uppapoiy ttyoui
+            [84, FourBit],
+            [73, FourBit],
+            [73, FourBit/2],
+            [79, FourBit/2],
+            [73, FourBit/2],
+            [85, FourBit/2],
+            [89, FourBit],
+            [82, FourBit],
+            [89, FourBit],
+            [79, FourBit],
+            [79, FourBit/2],
+            [80, FourBit/2],
+            [79, FourBit/2],
+            [73, FourBit/2],
+            [85, FourBit],
+            [84, FourBit],
+            [85, FourBit],
+            [80, FourBit],
+            [80, FourBit/2],
+            [65, FourBit/2],
+            [80, FourBit/2],
+            [79, FourBit/2],
+            [73, FourBit],
+            [89, FourBit],
+            [84, FourBit/2],
+            [84, FourBit/2],
+            [89, FourBit],
+            [79, FourBit],
+            [85, FourBit],
+            [73, FourBit*2]
+        ],
+        //Title: ['Play','a','song','and','have','fun', '!'],
 
         SurfacesNetDimension: [9,9],
         SurfacesNetSpacing: 4,//window.innerWidth*0.01,

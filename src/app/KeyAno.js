@@ -11,6 +11,7 @@ define(function(require, exports, module) {
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
     var JumpUpSurface = require('widget/JumpUpSurface/JumpUpSurface');
+    var WishView = require('app/WishView');
     var NElementsRotate = require('widget/NElementsRotate/NElementsRotate');
     var TipsView = require('widget/TipsView');
     var DemoView = require('widget/DemoView');
@@ -32,6 +33,11 @@ define(function(require, exports, module) {
         _setupContent.call(this);
         _setupEvents.call(this);
         _setSoundPlayer.call(this);
+        _setWishView.call(this);
+
+        setTimeout(function(){
+            _autoPlay.call(this);
+        }.bind(this), 2000)
     }
 
     KeyAno.prototype = Object.create(View.prototype);
@@ -71,8 +77,8 @@ define(function(require, exports, module) {
         this.add(this.tipsView);
         this._eventInput.pipe(this.tipsView);
 
-        this.demoView = new DemoView();
-        this.add(this.demoView);
+        //this.demoView = new DemoView();
+        //this.add(this.demoView);
     }
 
     function _setSoundPlayer(){
@@ -88,24 +94,48 @@ define(function(require, exports, module) {
 
     function _setupEvents(){
         this.time = 0;
-        var lastIndex = -2;
+        this.lastIndex = -2;
         Engine.on('keypress', function(e){
-            if (this.tipsView.isShowing) this._eventInput.emit('setFading');
-            var index = this.keyCodeToIndex(e.keyCode);
-            if (index == -1 || lastIndex == index) return;
-            this.jumpUpSurface.addItem();
-            this.sound.playSound(index, 1);
-            lastIndex = index;
+            this.onKeyPress(e.keyCode);
         }.bind(this));
 
         var setChanging = _.debounce(function(){
             this._eventInput.emit('setChanging');
         }.bind(this),5000);
         Engine.on('keyup',function(){
-            lastIndex = -2;
+            this.lastIndex = -2;
             setChanging();
         }.bind(this))
     }
+
+    function _setWishView(){
+        this.wishView = new WishView();
+        this.add(this.wishView);
+    }
+
+    function _autoPlay(){
+        this.playingIndex = 0;
+        this.playing(Constant.autoPlay[this.playingIndex][0], Constant.autoPlay[this.playingIndex][1])
+    }
+
+    KeyAno.prototype.playing = function(keyCode, time) {
+        this.onKeyPress(keyCode);
+        this.playingIndex++;
+        if (Constant.autoPlay[this.playingIndex]){
+            setTimeout(function(){
+                this.playing(Constant.autoPlay[this.playingIndex][0],Constant.autoPlay[this.playingIndex][1]||800);
+            }.bind(this), time)
+        }
+    };
+
+    KeyAno.prototype.onKeyPress = function(keyCode){
+        if (this.tipsView.isShowing) this._eventInput.emit('setFading');
+        var index = this.keyCodeToIndex(keyCode);
+        //if (index == -1 || this.lastIndex == index) return;
+        this.jumpUpSurface.addItem();
+        this.sound.playSound(index, 1);
+        this.lastIndex = index;
+    };
 
     KeyAno.prototype.keyCodeToIndex = function(code){
         var index;
