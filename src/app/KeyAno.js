@@ -11,8 +11,8 @@ define(function(require, exports, module) {
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
     var JumpUpSurface = require('widget/JumpUpSurface/JumpUpSurface');
-    var WishView = require('app/WishView');
     var NElementsRotate = require('widget/NElementsRotate/NElementsRotate');
+    var WishView = require('widget/WishView');
     var TipsView = require('widget/TipsView');
     var DemoView = require('widget/DemoView');
 
