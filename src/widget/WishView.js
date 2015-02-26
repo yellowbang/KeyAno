@@ -6,11 +6,14 @@ define(function(require, exports, module) {
     var Modifier = require('famous/core/Modifier');
     var Transform = require('famous/core/Transform');
     var Easing = require("famous/transitions/Easing");
+    var Timer = require("famous/utilities/Timer");
     var Transitionable = require('famous/transitions/Transitionable');
     var SnapTransition = require("famous/transitions/SnapTransition");
     Transitionable.registerMethod('snap', SnapTransition);
     var SpringTransition = require("famous/transitions/SpringTransition");
     Transitionable.registerMethod('spring', SnapTransition);
+
+    var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
     var JumpUpSurfaceItem = require('widget/JumpUpSurface/JumpUpSurfaceItem');
     var SvgTemplates = require('app/SvgTemplates');
@@ -18,14 +21,15 @@ define(function(require, exports, module) {
 
     function WishView(options){
 
+        this.wisher = options.model;
         View.apply(this,arguments);
-        bon=this;
         _init.call(this);
     }
 
     function _init(){
         this.setWishSurface();
         this.setFloatingItems();
+        _setSoundPlayer.call(this);
     }
 
     WishView.prototype = Object.create(View.prototype);
@@ -45,6 +49,7 @@ define(function(require, exports, module) {
                 boxShadow: '3px -3px 10px '+shadowColor+', 3px 3px 10px '+shadowColor+', -3px -3px 10px '+shadowColor+', -3px 3px 10px '+shadowColor
             }
         });
+        //this.setWishSurfaceContent(this.wisher.get('wish'));
         var transitionable = new Transitionable(0);
         this.wishSurfaceSpin = new  Modifier({
             transform: function(){
@@ -105,18 +110,34 @@ define(function(require, exports, module) {
 
         this._eventInput.on('focus', function(){
             transitionable.set(1, transition);
-            setTimeout(function(){
+            this.tempContent = _.clone(document.getElementById('wish-area').value);
+            if (this.wisher && this.wisher.get('wish')){
+                this.setWishSurfaceContent(this.wisher.get('wish'));
+            }
+            Timer.setTimeout(function(){
                 document.getElementById('wish-area').focus();
             }.bind(this),1000)
         }.bind(this));
 
         this.cancelButton.on('click', function(){
-            this._eventInput.emit('scatter')
+            this._eventInput.emit('scatter');
+            Timer.setTimeout(function(){
+                this.setWishSurfaceContent(this.tempContent);
+            }.bind(this),1000);
+            this.sound.playSound(1,1);
         }.bind(this));
 
         this.summitButton.on('click', function(){
-            this._eventInput.emit('scatter')
+            this.wisher.set('wish', document.getElementById('wish-area').value);
+            this._eventInput.emit('scatter');
+            this.sound.playSound(0,1)
         }.bind(this))
+    };
+
+    WishView.prototype.setWishSurfaceContent = function(content) {
+        if (document.getElementById('wish-area')) {
+            document.getElementById('wish-area').value = content;
+        }
     };
 
     WishView.prototype.setFloatingItems = function() {
@@ -143,7 +164,7 @@ define(function(require, exports, module) {
             content: '<div>'+SvgTemplates[_.keys(SvgTemplates)[index]]([130, 130], color)+'</div>'
         });
         var transitionable = new Transitionable(0);
-        transitionable.set(Math.max(window.innerWidth,window.innerHeight));
+        transitionable.set(Math.max(window.innerWidth, window.innerHeight));
         var floatingItemMod0 = new Modifier({
             transform: function(){
                 return Transform.rotateZ(-.001 * (Date.now() - this.initialTime)-index*2*Math.PI/this.num);
@@ -170,6 +191,17 @@ define(function(require, exports, module) {
             transitionable.set(260, transition)
         }.bind(this))
     };
+
+    function _setSoundPlayer(){
+        var soundsName = ['4do', '1so'];
+        var sounds = [];
+        for (var i = 0; i < soundsName.length; i++){
+            sounds.push([
+                '/assets/sound/',soundsName[i],'.wav'
+            ].join(''))
+        }
+        this.sound = new SoundPlayer(sounds);
+    }
 
     module.exports = WishView;
 

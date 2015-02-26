@@ -7,6 +7,7 @@ define(function(require, exports, module) {
     var HeaderFooterLayout = require('famous/views/HeaderFooterLayout');
     var ImageSurface = require('famous/surfaces/ImageSurface');
     var Vector = require('famous/math/Vector');
+    var Timer = require("famous/utilities/Timer");
 
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
@@ -19,7 +20,8 @@ define(function(require, exports, module) {
     var Constant = require('app/Constant');
 
     var Lyrics = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//    var Lyrics = ['多','谢','你','啦','林','颖','薯','high','hand'];
+    var WishesCollection = require('app/models/WishersCollection');
+    var FirebaseURL = "https://flickering-fire-5114.firebaseio.com/christy/";
 
     function KeyAno(){
 
@@ -27,18 +29,7 @@ define(function(require, exports, module) {
         View.call(this);
         this.surf = new View();
         this.makingWishes = false;
-        this.currIndex = 0;
-//        _setupBackground.call(this);
-        _setupLayout.call(this);
-//        _setupHeader.call(this);
-        _setupContent.call(this);
-        _setSoundPlayer.call(this);
-        _setWishView.call(this);
-        _setupEvents.call(this);
-
-        setTimeout(function(){
-            //_autoPlay.call(this);
-        }.bind(this), 2000)
+        _setupFirebase.call(this);
     }
 
     KeyAno.prototype = Object.create(View.prototype);
@@ -49,13 +40,47 @@ define(function(require, exports, module) {
         surfacesNetImageSize : [1024,768]
     };
 
-    function _setupBackground(){
-        this.backgroundSurf = new Surface({
-            size:[undefined,undefined],
-            content:'<div class="app-background"></div>'
+    function _setupFirebase(){
+        this.wishesCollection = new WishesCollection([], {
+            firebase: FirebaseURL
         });
-        this.add(this.backgroundSurf);
+
+        function generateUserId() {
+            var userId = localStorage.getItem('user-id');
+            if (!userId) {
+                userId = Date.now();
+                localStorage.setItem('user-id', userId);
+            }
+            return userId;
+        }
+
+        function loadId(){
+            this.wisher = this.wishesCollection.where({id: userId})[0];
+            if (!this.wisher) {
+                this.wishesCollection.create({
+                    id: userId
+                });
+                this.wisher = this.wishesCollection.where({id: userId})[0];
+            }
+
+            Timer.setTimeout(function(){
+                _setupLayout.call(this);
+                _setupContent.call(this);
+                _setSoundPlayer.call(this);
+                _setWishView.call(this);
+                _setupEvents.call(this);
+                Timer.setTimeout(function(){
+                    _autoPlay.call(this);
+                }.bind(this), 3100);
+            }.bind(this),500);
+        }
+
+        var userId = generateUserId();
+        Timer.setTimeout(function(){
+            loadId.call(this)
+        }.bind(this), 1000)
     }
+
     function _setupLayout(){
         this.layout = new HeaderFooterLayout({
             headerSize: Constant.HeaderSize,
@@ -73,6 +98,7 @@ define(function(require, exports, module) {
             transform:Transform.rotateX(-0.2)
         });
         this.layout.content.add(this.nElementRotateMod).add(this.nElementRotate);
+        this._eventOutput.pipe(this.nElementRotate);
 
         this.tipsView = new TipsView();
         this.add(this.tipsView);
@@ -90,6 +116,7 @@ define(function(require, exports, module) {
                 '/assets/sound/',soundsName[i],'.wav'
             ].join(''))
         }
+        sounds.push('/assets/sound/canon.mp3');
         this.sound = new SoundPlayer(sounds);
     }
 
@@ -119,7 +146,7 @@ define(function(require, exports, module) {
     }
 
     function _setWishView(){
-        this.wishView = new WishView();
+        this.wishView = new WishView({model: this.wisher});
         this.add(this.wishView);
         this._eventOutput.pipe(this.wishView)
     }
@@ -131,18 +158,24 @@ define(function(require, exports, module) {
 
     KeyAno.prototype.playing = function(keyCode, time) {
         this.onKeyPress(keyCode);
+        this._eventOutput.emit('rorate');
         this.playingIndex++;
         if (Constant.autoPlay[this.playingIndex]){
-            setTimeout(function(){
+            Timer.setTimeout(function(){
                 this.playing(Constant.autoPlay[this.playingIndex][0],Constant.autoPlay[this.playingIndex][1]||800);
             }.bind(this), time)
+        } else {
+            Timer.setTimeout(function(){
+                this.sound.playSound(36, 1);
+                this.setMakeWishesMode();
+            }.bind(this), 4000)
         }
     };
 
     KeyAno.prototype.onKeyPress = function(keyCode){
         if (this.tipsView.isShowing) this._eventInput.emit('setFading');
         var index = this.keyCodeToIndex(keyCode);
-        //if (index == -1 || this.lastIndex == index) return;
+        if (index == -1) return;
         this.jumpUpSurface.addItem();
         this.sound.playSound(index, 1);
         this.lastIndex = index;

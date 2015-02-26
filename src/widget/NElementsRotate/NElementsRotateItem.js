@@ -54,14 +54,11 @@ define(function(require, exports, module) {
     function _setupEvent(){
         Engine.on('keydown',function(e){
             if (e.keyCode >= 48 && e.keyCode <= 90){
-                var v = new Vector(this.particle.getVelocity());
-                if (this.getVelocityMagnitude(v)<= this.options.maxSpeed){
-                    var pos = this.particle.getPosition();
-                    var x = this.options.radiusPosition[0] - pos[0];
-                    var z = pos[2];
-                    this.particle.applyForce(new Vector([-z/this.radiusLength,0,-x/this.radiusLength]).normalize(this.options.forceStrength));
-                }
+                this.pushRotate();
             }
+        }.bind(this));
+        this._eventInput.on('rorate', function(){
+            this.pushRotate()
         }.bind(this))
     }
 
@@ -101,6 +98,16 @@ define(function(require, exports, module) {
         return Math.sqrt(dis(a[0],b[0])+dis(a[1],b[1])+dis(a[2],b[2]))
     };
 
+
+    NElementsRotateItem.prototype.pushRotate = function(){
+        var v = new Vector(this.particle.getVelocity());
+        if (this.getVelocityMagnitude(v)<= this.options.maxSpeed){
+            var pos = this.particle.getPosition();
+            var x = this.options.radiusPosition[0] - pos[0];
+            var z = pos[2];
+            this.particle.applyForce(new Vector([-z/this.radiusLength,0,-x/this.radiusLength]).normalize(this.options.forceStrength));
+        }
+    };
 
     NElementsRotateItem.prototype.getVelocityMagnitude = function(v){
         return Math.sqrt(Math.pow(v.x,2)+Math.pow(v.y,2)+Math.pow(v.z,2))

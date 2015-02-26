@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var Spring = require('famous/physics/forces/Spring');
-    var FourBit = 800;
+    var FourBit = 600;
 
     module.exports = {
 
@@ -21,8 +21,7 @@ define(function(require, exports, module) {
         HeaderSize:0,
         FooterSize:0,
 
-        //Title: ['生','日','快','樂','Merry','Christy'],
-        Title: ['aaaaaaaa'],
+        Title: ['生','日','快','樂','Mer','ry','Chris','ty'],
         autoPlay:[
             //ttytiu ttytoi ttspiiuy aapioi
             [84, FourBit/2],
@@ -49,7 +48,7 @@ define(function(require, exports, module) {
             [80, FourBit],
             [73, FourBit],
             [79, FourBit],
-            [73, FourBit*10],
+            [73, FourBit*7],
             //tiioiuyr yoopoiut uppapoiy ttyoui
             [84, FourBit],
             [73, FourBit],

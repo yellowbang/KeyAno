@@ -73,6 +73,7 @@ define(function(require, exports, module) {
         });
         this.physicsEngine.attach([this.radius,this.rotationalDrag], item.particle);
         this.add(item);
+        this._eventInput.pipe(item);
     };
 
     NElementsRotate.prototype.setItemContent = function(word){
