@@ -53,7 +53,7 @@ define(function(require, exports, module) {
 //            word: model.content,
             size: this.options.size,
             initVelocity: [0,-SPEED[Math.floor(Math.random()*SPEED.length)],-0.5],
-            color: 'hsl('+Math.random()*360+',100%,85%)'
+            color: 'hsl('+Math.random()*360+',100%,82%)'
         });
         this.physicsEngine.addBody(item.particle);
         this.physicsEngine.attach([this.gravityField,this.wall], item.particle);

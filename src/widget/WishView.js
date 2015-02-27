@@ -15,6 +15,7 @@ define(function(require, exports, module) {
 
     var SoundPlayer = require('widget/SoundPlayer/SoundPlayer');
 
+    var ShakingItemView = require('widget/ShakingItemView');
     var JumpUpSurfaceItem = require('widget/JumpUpSurface/JumpUpSurfaceItem');
     var SvgTemplates = require('app/SvgTemplates');
     var Constant = require('app/Constant');
@@ -39,9 +40,9 @@ define(function(require, exports, module) {
         var shadowColor = 'rgb(134, 255, 237)';
         this.wishNode = new Node();
         this.wishSurface = new Surface({
-            size: [300, 300],
+            size: [window.innerHeight/3, window.innerHeight/3],
             content: ['<div class="wish-surface">',
-                '<textarea id="wish-area" class="wish-surface" placeholder="Wishes Time!"></textarea>',
+                '<textarea id="wish-area" class="wish-surface" placeholder="Wishes Time!" style="height: '+ window.innerHeight/5 +'px"></textarea>',
                 '</div>'].join(''),
             properties:{
                 background: 'rgba(0, 236, 255, 0.7)',
@@ -59,7 +60,7 @@ define(function(require, exports, module) {
         this.wishSurfaceMod = new Modifier({
             origin: [0.5, 0.5],
             align: [0.5, 0.5],
-            transform: Transform.translate(0,100,0)
+            transform: Transform.translate(0,window.innerHeight/7,0)
         });
         this.wishSurfaceAnimate = new Modifier({
             opacity:function(){
@@ -71,28 +72,28 @@ define(function(require, exports, module) {
         this.wishNode.add(this.wishSurface);
 
         this.cancelButton = new Surface({
-            size: [100, 40],
-            content: '<div class="cancel-button button">Cancel</div>',
+            size: [window.innerHeight/10, window.innerHeight/20],
+            content: '<div class="cancel-button button" style="line-height: '+window.innerHeight/20+'px">Cancel</div>',
             properties:{
                 background: 'rgba(240, 178, 175, 0.7)',
                 borderRadius: '10px'
             }
         });
         this.cancelButtonMod = new Modifier({
-            transform: Transform.translate(-80,110,20)
+            transform: Transform.translate(-window.innerHeight/9.5,window.innerHeight/8,15)
         });
         this.wishNode.add(this.cancelButtonMod).add(this.cancelButton);
 
         this.summitButton = new Surface({
-            size: [150, 40],
-            content: '<div class="summit-button button">Make Wishes</div>',
+            size: [window.innerHeight/5.4, window.innerHeight/20],
+            content: '<div class="summit-button button" style="line-height: '+window.innerHeight/20+'px">Make Wishes</div>',
             properties:{
                 background: 'rgba(196, 255, 131, 0.7)',
                 borderRadius: '10px'
             }
         });
         this.summitButtonMod = new Modifier({
-            transform: Transform.translate(60,110,20)
+            transform: Transform.translate(window.innerHeight/16,window.innerHeight/8,15)
         });
         this.wishNode.add(this.summitButtonMod).add(this.summitButton);
 
@@ -148,10 +149,15 @@ define(function(require, exports, module) {
             origin: [0.5, 0.5],
             align: [0.5, 0.5],
             transform : function () {
-                return Transform.thenMove(Transform.rotateZ(.001 * (Date.now() - this.initialTime)), [0, 100, 0]);
+                return Transform.thenMove(Transform.rotateZ(.001 * (Date.now() - this.initialTime)), [0, window.innerHeight/7, 0]);
             }.bind(this)
         });
-        this.add(this.floatItemsNodeMod).add(this.floatItemsNode);
+        this.shakingMod = new Modifier({
+            transform: function(){
+                return Transform.rotateZ(0.04* Math.sin((Date.now() - this.initialTime)/200));
+            }.bind(this)
+        });
+        this.add(this.floatItemsNodeMod).add(this.shakingMod).add(this.floatItemsNode);
         for (var i= 0; i < this.num; i++){
             this.addFloatingItem(i);
         }
@@ -160,8 +166,8 @@ define(function(require, exports, module) {
     WishView.prototype.addFloatingItem = function(index) {
         var color= 'hsl(' +index*360/this.num + ',100%,85%)';
         var floatingItem = new Surface({
-            size: [130, 130],
-            content: '<div>'+SvgTemplates[_.keys(SvgTemplates)[index]]([130, 130], color)+'</div>'
+            size: [window.innerHeight/7, window.innerHeight/7],
+            content: '<div>'+SvgTemplates[_.keys(SvgTemplates)[index]]([window.innerHeight/7, window.innerHeight/7], color)+'</div>'
         });
         var transitionable = new Transitionable(0);
         transitionable.set(Math.max(window.innerWidth, window.innerHeight));
@@ -188,7 +194,7 @@ define(function(require, exports, module) {
         }.bind(this));
 
         this._eventInput.on('focus', function(){
-            transitionable.set(260, transition)
+            transitionable.set(window.innerHeight/3.5, transition)
         }.bind(this))
     };
 

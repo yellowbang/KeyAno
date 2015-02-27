@@ -54,7 +54,7 @@ define(function(require, exports, module) {
         initVelocity: [0,-SPEED[Math.floor(Math.random()*SPEED.length)],0],
         fontSizeFront: '90',
         fontSizeBack: '90',
-        color: 'hsl('+Math.random()*360+',100%,85%)'
+        color: 'hsl('+Math.random()*360+',100%,82%)'
     };
 
     function _createView(){

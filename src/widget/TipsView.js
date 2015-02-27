@@ -42,6 +42,7 @@ define(function(require, exports, module) {
             origin:[0.5,0.5]
         });
         this.setChanging();
+        this.setFading();
 
         this.add(this.tipsViewMod).add(this.tipsView);
     }
@@ -64,7 +65,7 @@ define(function(require, exports, module) {
         this.tipsViewMod.opacityFrom(function(){
             return this.tempOpacity.get();
         }.bind(this));
-        this.tempOpacity.set(0,{duration:this.tempOpacity.get()/this.options.maxOpacity*(this.options.period/2)})
+        this.tempOpacity.set(0,{duration:this.tempOpacity.get()/this.options.maxOpacity*(this.options.period/2)});
         this.isShowing = false;
     };
 
