@@ -42,7 +42,7 @@ define(function(require, exports, module) {
         this.wishSurface = new Surface({
             size: [window.innerHeight/3, window.innerHeight/3],
             content: ['<div class="wish-surface">',
-                '<textarea id="wish-area" class="wish-surface" placeholder="Wishes Time!" style="height: '+ window.innerHeight/5 +'px"></textarea>',
+                '<textarea id="wish-area" class="wish-surface" placeholder="Wishes Time!" style="height: '+ window.innerHeight/5 +'px; font-size: '+window.innerHeight/30+'px"></textarea>',
                 '</div>'].join(''),
             properties:{
                 background: 'rgba(0, 236, 255, 0.7)',
