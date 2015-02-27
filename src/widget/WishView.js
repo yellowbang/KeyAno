@@ -203,7 +203,7 @@ define(function(require, exports, module) {
         var sounds = [];
         for (var i = 0; i < soundsName.length; i++){
             sounds.push([
-                '/assets/sound/',soundsName[i],'.wav'
+                '/assets/Sound/',soundsName[i],'.wav'
             ].join(''))
         }
         this.sound = new SoundPlayer(sounds);
