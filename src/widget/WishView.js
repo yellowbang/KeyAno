@@ -43,6 +43,7 @@ define(function(require, exports, module) {
             size: [window.innerHeight/3, window.innerHeight/3],
             content: ['<div class="wish-surface">',
                 '<textarea id="wish-area" class="wish-surface" placeholder="Wishes Time!" style="height: '+ window.innerHeight/5 +'px; font-size: '+window.innerHeight/30+'px"></textarea>',
+//                '<div id="wish-area" class="wish-surface" placeholder="Wishes Time!" style="height: '+ window.innerHeight/5 +'px; font-size: '+window.innerHeight/41+'px">You are not alone ga. We are nearby and supporting you all the time. Your dream will come true. Do not give up and have a wonderful tomorrow.</div>',
                 '</div>'].join(''),
             properties:{
                 background: 'rgba(0, 236, 255, 0.7)',
